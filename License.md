@@ -17,11 +17,11 @@ Therefore, responsibility for any damages caused by this product or its misuse r
 
 - Do not take credit for product. Removing credits from inside the products file(s) is prohibited
 
-### Summery
+### Summary
 So basically you can edit anything with the product (except the terms), but you can not release the product nor release the edited version without written permission from FAXES. 
 
-Terms are also available at 
-[www.faxes.zone/scripts/terms](http://faxes.zone/scripts/terms)
-
+#### Further Help
+http://faxes.zone/discord
 
 ![alt text](http://faxes.zone/TOSlogos/FAXES%20ToUSML.png "FAXES ToU Icon")
+

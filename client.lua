@@ -2,6 +2,14 @@
 -- External Vehicle Commands, Made by FAXES --
 ----------------------------------------------
 
+--- Config ---
+
+usingKeyPress = false -- Allow use of a key press combo (default Ctrl + E) to open trunk/hood from outside
+togKey = 38 -- E
+
+
+--- Code ---
+
 function ShowInfo(text)
 	SetNotificationTextEntry("STRING")
 	AddTextComponentString(text)
@@ -94,23 +102,51 @@ RegisterCommand("door", function(source, args, raw)
         if IsPedInAnyVehicle(ped, false) then
             if GetVehicleDoorAngleRatio(veh, door) > 0 then
                 SetVehicleDoorShut(veh, door, false)
-                TriggerEvent("^*[Vehicle] ~g~Door Closed.")
+                ShowInfo("[EVC] ~g~Door Closed.")
             else	
                 SetVehicleDoorOpen(veh, door, false, false)
-                TriggerEvent("^*[Vehicle] ~g~Door Opened.")
+                ShowInfo("[EVC] ~g~Door Opened.")
             end
         else
             if distanceToVeh < 4 then
                 if GetVehicleDoorAngleRatio(vehLast, door) > 0 then
                     SetVehicleDoorShut(vehLast, door, false)
-                    TriggerEvent("[Vehicle] ~g~Door Closed.")
+                    ShowInfo("[EVC] ~g~Door Closed.")
                 else	
                     SetVehicleDoorOpen(vehLast, door, false, false)
-                    TriggerEvent("[Vehicle] ~g~Door Opened.")
+                    ShowInfo("[EVC] ~g~Door Opened.")
                 end
             else
-                TriggerEvent("[Vehicle] ~y~Too far away from vehicle.")
+                ShowInfo("[EVC] ~y~Too far away from vehicle.")
             end
         end
     end
 end)
+
+if usingKeyPress then
+    Citizen.CreateThread(function()
+        while true do
+            Citizen.Wait(10)
+            local ped = GetPlayerPed(-1)
+            local veh = GetVehiclePedIsUsing(ped)
+            local vehLast = GetPlayersLastVehicle()
+            local distanceToVeh = GetDistanceBetweenCoords(GetEntityCoords(ped), GetEntityCoords(vehLast), 1)
+            local door = 5
+            if IsControlPressed(1, 224) and IsControlJustPressed(1, togKey) then
+                if not IsPedInAnyVehicle(ped, false) then
+                    if distanceToVeh < 4 then
+                        if GetVehicleDoorAngleRatio(vehLast, door) > 0 then
+                            SetVehicleDoorShut(vehLast, door, false)
+                            ShowInfo("[EVC] ~g~Trunk Closed.")
+                        else	
+                            SetVehicleDoorOpen(vehLast, door, false, false)
+                            ShowInfo("[EVC] ~g~Trunk Opened.")
+                        end
+                    else
+                        ShowInfo("[EVC] ~y~Too far away from vehicle.")
+                    end
+                end
+            end
+        end
+    end)
+end
