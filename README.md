@@ -1,21 +1,22 @@
-# External Vehicle Commands - By FAXES
+### 📠 [Vehicle Commands][5mlink] 📠
 
-## [Support Discord](https://faxes.zone/discord)
+[![Discord](https://faxes.zone/i/9wkr3.png)](https://faxes.zone/discord)
 
-**About**
-Today I release my 28th script to the forums. So what is it now? This script essentially allows you to use /trunk, /hood and /door from outside your car. I made this in around 15 mins, its fully tested and works.
+----
 
------
+Today I release my 28th script to the forums. So what is it now? This script essentially allows you to use /trunk, /hood and /door from outside your car. I made this in around 15 mins, its fully tested and works. 1.2 now includes a keybinding to open the trunk.
 
-**Video:**
-https://youtu.be/JilkYDQ6a_A
+**Documentation:**
+- [FAXES Documentation Site](https://docs.faxes.zone/docs)
+- [FAXES ACE Permission Documentation](https://docs.faxes.zone/docs/aceperms)
+- [Getting Your Steam Hexadecimal](https://docs.faxes.zone/docs/getting-your-steam-hex)
 
-https://faxes.zone/imagebanks/1wfzp.png
+**Credits:**
+- FAXES
+- Astra 
 
------
+<br />
 
-**Requirements**
-None. This is a standalone script.
+[![FiveM](https://faxes.zone/i/r5byi.png)][5mlink]
 
-**Installation**
-Place in your resources folder, just like [any other normal resource](https://forum.fivem.net/t/how-to-install-a-fivem-resource-script/81013).
+[5mlink]: https://forum.cfx.re/t/203795

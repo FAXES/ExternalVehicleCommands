@@ -11,9 +11,9 @@ togKey = 38 -- E
 --- Code ---
 
 function ShowInfo(text)
-	SetNotificationTextEntry("STRING")
-	AddTextComponentString(text)
-	DrawNotification(false, false)
+	BeginTextCommandThefeedPost("STRING")
+	AddTextComponentSubstringPlayerName(text)
+	EndTextCommandThefeedPostTicker(false, false)
 end
 
 RegisterCommand("trunk", function(source, args, raw)
@@ -94,30 +94,30 @@ RegisterCommand("door", function(source, args, raw)
         door = nil
         ShowInfo("Usage: ~n~~b~/door [door]")
         ShowInfo("~y~Possible doors:")
-        ShowInfo("1(Front Left Door), 2(Front Right Door)")
-        ShowInfo("3(Back Left Door), 4(Back Right Door)")
+        ShowInfo("1: Front Left Door~n~2: Front Right Door")
+        ShowInfo("3: Back Left Door~n~4: Back Right Door")
     end
 
     if door ~= nil then
         if IsPedInAnyVehicle(ped, false) then
             if GetVehicleDoorAngleRatio(veh, door) > 0 then
                 SetVehicleDoorShut(veh, door, false)
-                ShowInfo("[EVC] ~g~Door Closed.")
+                ShowInfo("[Vehicle] ~g~Door Closed.")
             else	
                 SetVehicleDoorOpen(veh, door, false, false)
-                ShowInfo("[EVC] ~g~Door Opened.")
+                ShowInfo("[Vehicle] ~g~Door Opened.")
             end
         else
             if distanceToVeh < 4 then
                 if GetVehicleDoorAngleRatio(vehLast, door) > 0 then
                     SetVehicleDoorShut(vehLast, door, false)
-                    ShowInfo("[EVC] ~g~Door Closed.")
+                    ShowInfo("[Vehicle] ~g~Door Closed.")
                 else	
                     SetVehicleDoorOpen(vehLast, door, false, false)
-                    ShowInfo("[EVC] ~g~Door Opened.")
+                    ShowInfo("[Vehicle] ~g~Door Opened.")
                 end
             else
-                ShowInfo("[EVC] ~y~Too far away from vehicle.")
+                ShowInfo("[Vehicle] ~y~Too far away from vehicle.")
             end
         end
     end
@@ -137,13 +137,13 @@ if usingKeyPress then
                     if distanceToVeh < 4 then
                         if GetVehicleDoorAngleRatio(vehLast, door) > 0 then
                             SetVehicleDoorShut(vehLast, door, false)
-                            ShowInfo("[EVC] ~g~Trunk Closed.")
+                            ShowInfo("[Vehicle] ~g~Trunk Closed.")
                         else	
                             SetVehicleDoorOpen(vehLast, door, false, false)
-                            ShowInfo("[EVC] ~g~Trunk Opened.")
+                            ShowInfo("[Vehicle] ~g~Trunk Opened.")
                         end
                     else
-                        ShowInfo("[EVC] ~y~Too far away from vehicle.")
+                        ShowInfo("[Vehicle] ~y~Too far away from vehicle.")
                     end
                 end
             end
